@@ -10,8 +10,9 @@ public class Calculator : MonoBehaviour
     private float input1;
     private float input2;
     private string operation;
-    private string currentInput;
+    private string currentInput; 
     private bool equalIsPressed;
+    private string compression;
 
     public void ClickNumber(int number)
     {
@@ -37,6 +38,7 @@ public class Calculator : MonoBehaviour
         {
             SetCurrentInput();
             operation = operat;
+            compression = operat;
         }
         else
         {
@@ -44,6 +46,7 @@ public class Calculator : MonoBehaviour
             {
                 equalIsPressed = false;
                 operation = operat;
+                compression = operat;
                 input2 = 0;
             }
             else
@@ -51,10 +54,16 @@ public class Calculator : MonoBehaviour
                 if (operation.Equals(operat, StringComparison.OrdinalIgnoreCase))
                 {
                     Calculate();
+                    
+                }
+                if (compression.Equals(operat, StringComparison.OrdinalIgnoreCase))
+                {
+                    ClickCompression();
                 }
                 else
                 {
                     operation = operat;
+                    compression = operat;
                     input2 = 0;
                 }
             }
@@ -64,10 +73,10 @@ public class Calculator : MonoBehaviour
     public void ClickEqual(string equalsOper)
     {
         Debug.Log($"{equalsOper}");
-        Calculate();
+        Calculate();   
         equalIsPressed = true;
     }
-
+    
     private void Calculate()
     {
         if (input1 != 0 && !string.IsNullOrEmpty(operation))
@@ -88,8 +97,8 @@ public class Calculator : MonoBehaviour
                     result = input1 / input2;
                     break;
             }
-            InputText.SetText(result.ToString());
-            input1 = result;
+                InputText.SetText(result.ToString());
+                input1 = result;
         }
     }
 
@@ -117,8 +126,34 @@ public class Calculator : MonoBehaviour
         result = 0;
         InputText.SetText("0");
     }
+
+    public void ClickEqualComp(string equalsComp)
+    {
+        Debug.Log($"{equalsComp}");
+        ClickCompression();
+        equalIsPressed = true;
+    }
+
     public void ClickCompression()
     {
-
+        if (!string.IsNullOrEmpty(operation))
+        {
+            SetCurrentInput();
+            if (input1 != input2)
+            {
+                if (input1 > input2)
+                {
+                    result = input1;
+                    InputText.SetText($"{result} > {input2}");
+                }
+                else
+                {
+                    result = input2;
+                    InputText.SetText($"{input1} < {result}");
+                }
+            }
+            else
+                InputText.SetText($"{input1} = {input2}");
+        }
     }
 }

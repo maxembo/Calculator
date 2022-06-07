@@ -246,6 +246,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8247050979984513205, guid: 263014e73d0e74846bd5a33742e6338c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 144.6125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247050979984513205, guid: 263014e73d0e74846bd5a33742e6338c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 188.00461
+      objectReference: {fileID: 0}
     - target: {fileID: 8312670540748976177, guid: 263014e73d0e74846bd5a33742e6338c, type: 3}
       propertyPath: m_Name
       value: CanvasFirstScreen
